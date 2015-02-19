@@ -1,0 +1,190 @@
+\documentclass{proposalnsf}
+% This class file has been tweaked to death by LBarba to fit precisely the 
+% formatting strictures of NSF, while still being rather pretty.
+
+%--------------------------------------------------------------------  PROCESS WITH XeLaTeX
+%\usepackage{fontspec}% provides font selecting commands 
+%\usepackage{paralist}       % compactitem environment
+%\usepackage{xunicode}% provides unicode character macros 
+%\usepackage{xltxtra} % provides some fixes/extras 
+%\setromanfont[Mapping=tex-text,
+%                 SmallCapsFont={Palatino},
+%                 SmallCapsFeatures={Scale=0.85}]{Palatino}
+%\setsansfont[Scale=0.85]{Trebuchet MS} 
+%\setmonofont[Scale=0.85]{Monaco}
+
+\renewcommand{\captionlabelfont}{\bf\sffamily}
+\usepackage[hang,flushmargin]{footmisc} 
+% 'hang' flushes the footnote marker to the left,  'flushmargin'  flushes the text as well.
+
+% Define the color to use in links:
+\definecolor{linkcol}{rgb}{0.459,0.071,0.294}
+\definecolor{sectcol}{rgb}{0.63,0.16,0.16} % {0,0,0}
+\definecolor{propcol}{rgb}{0.75,0.0,0.04}
+
+\definecolor{gray}{rgb}{0.25,0.25,0.25}
+\definecolor{ngreen}{rgb}{0.7,0.7,0.7} % a darker shade of green
+
+\usepackage[
+    %xetex,
+    pdftitle={Packard Fellowship Research Statement},
+    pdfauthor={Rachel Slaybaugh},
+    pdfpagemode={UseOutlines},
+    pdfpagelayout={TwoColumnRight},
+    bookmarks, bookmarksopen,bookmarksnumbered={True},
+    pdfstartview={FitH},
+    colorlinks, linkcolor={sectcol},citecolor={sectcol},urlcolor={sectcol}
+    ]{hyperref}
+
+%% Define a new style for the url package that will use a smaller font.
+\makeatletter
+\def\url@leostyle{%
+  \@ifundefined{selectfont}{\def\UrlFont{\sf}}{\def\UrlFont{\small\ttfamily}}}
+\makeatother
+%% Now actually use the newly defined style.
+\urlstyle{leo}
+
+
+% this handles hanging indents for publications
+\def\rrr#1\\{\par
+\medskip\hbox{\vbox{\parindent=2em\hsize=6.12in
+\hangindent=4em\hangafter=1#1}}}
+
+
+\addto\captionsamerican{%
+  \renewcommand{\refname}%
+    {References Cited}%
+} % solution found here: http://www.tex.ac.uk/cgi-bin/texfaq2html?label=latexwords
+
+\def\baselinestretch{1}
+\setlength{\parindent}{0mm} \setlength{\parskip}{0.8em}
+
+\newlength{\up}
+\setlength{\up}{-4mm}
+
+\newlength{\hup}
+\setlength{\hup}{-2mm}
+
+\sectionfont{\large\bfseries\color{sectcol}\vspace{-2mm}}
+\subsectionfont{\normalsize\it\bfseries\vspace{-4mm}}
+\subsubsectionfont{\normalsize\mdseries\itshape\vspace{-4mm}} %\itshape
+\paragraphfont{\bfseries}
+
+% ---------------------------------------------------------------------
+% DRAFTING COMMENTS:
+\newcommand\ignore[1]{} % Styles for author comments:
+% Enter a comment like this:   \comment{This is a comment.}
+%\ignore{
+\newcommand{\important}[1]{\textcolor{red}{ #1 }}
+\newcommand{\comment}[1]{\textcolor{blue}{ #1 }}
+%}
+% Uncomment lines below to change from visible to invisible comments.
+%\renewcommand{\important}[1]{}
+%\renewcommand{\comment}[1]{}
+
+\begin{document}
+% Small title with normal-size font:
+\begin{center}
+
+\textbf{Pakard Fellowship Research Statement}\\
+Rachel N.\ Slaybaugh, Assistant Professor\\
+Department of Nuclear Engineering, University of California, Berkeley
+
+\end{center}
+
+MC on advanced architectures. Big challenge in current climate; building machines
+at the extreme scale and we're working on that. No one is really actually trying
+to take this to the vendor/industry scale to change how we do things. 
+
+Basis: we have a code that runs on 1 GPU and 1 CPU, but it's very early. We 
+will really need to work to investigate methods to get this to perform better on
+that system. We further need to expand this to other architecture types so that
+we aren't tied only to GPUs (e.g.\ MICs) and allow for multi-CPU + GPU systems.
+
+I'm on a propsal to get early machine access. This will provide access to the 
+architecture, the hardware vendors, and the compiler and language developers.
+However, this award does not provide funding for me. 
+
+Additional component: I'd really like to be able to have the resources to 
+connect with industry, expecially young employees who are more open to new 
+methods and ideas. This could help fund exchanges with them to really bring
+their problems into my research.
+
+5 year timeline:
+\begin{itemize}
+\item Year 1:
+    \begin{itemize}
+    \item Investigate expanding WARP to MICs
+    \item Complete delta-tracking geometry investigation
+    \item Extend WARP to multi-CPU
+    \end{itemize}
+
+\item Year 2:
+    \begin{itemize}
+    \item Design integration framework for generic architecture strategy
+    \item Tackle strategies for isotope handling
+    \item Begin working with NuScale and TP so they can try out the code
+    \end{itemize}
+
+\item Year 3:
+    \begin{itemize}
+    \item Implement and test framework for generic architecture (if possible)
+    \item Investigate VR methods that are targeted for GPUs and MICs; look for
+          innovative plans for overlap
+    \item Use TP and NuScale feedback for code design modifications
+    \end{itemize}
+
+\item Year 4:
+    \begin{itemize}
+    \item Continue development and testing of VR methods
+    \item Begin investigating best methods for multi-physics integration
+    \item TP and NuScale design calculation tests
+    \end{itemize}
+
+\item Year 5:
+    \begin{itemize}
+    \item Continue testing and implementation of multi-physics integration
+    \item Take code to large vendors (Westinghouse, Areva) for testing and input
+    \end{itemize}
+\end{itemize}
+
+Other ideas: 
+\begin{itemize}
+\item Multigroup cross section processing combined with nuclear data understanding
+      (this is much more outside of my experience, but I think it's really 
+       important)
+\item Use PyNE to build plug-and-play research toolbox. Allows for rapid
+      investigation of new numerical methods. The buildup will be slow, but if 
+      well thought out I think it could actually be agile. This also relies on 
+      me having ideas - but I still have some about eval solvers, preconditioners,
+      etc. Could also be a framework for code coupling?
+\end{itemize}
+
+
+The Fellowship Program provides support for highly
+creative researchers early in their careers; faculty
+members who are well established and well‐funded
+are less likely to receive the award.  Packard Fellows
+are inquisitive, passionate scientists and engineers
+who take a creative approach to their research, dare
+to think big, and follow new ideas wherever they lead.  
+The Foundation emphasizes support for innovative
+individual research that involves the Fellows, their
+students, and junior colleagues, rather than
+extensions or components of large‐scale, ongoing
+research programs.  
+
+The research statement should describe why
+the research is important and outline the
+general goals for the next five years. The
+statement should also indicate, in general,
+how funds will be used. This does not need to
+be a detailed budget and will not be binding
+on the actual use of funds. The research
+statement is limited to 1,400 words
+(maximum two pages of text, prepared in 12‐
+point font with 1‐inch margins). If there are
+relevant figures, images or references, please
+include these separately on a third page.  
+
+\end{document}
