@@ -38,23 +38,23 @@ between data acquisition and analysis will continue to grow unless a more compre
 theoretical approach to optimization is developed.
 
 Current approaches to large scale optimization and machine learning are bottlenecked by:
-• Non-convex objective functions, and exponentially or high degree polynomial
+* Non-convex objective functions, and exponentially or high degree polynomial
 scaling algorithms.
-• Algorithms which are not optimized for parallelization and large scale
+* Algorithms which are not optimized for parallelization and large scale
 implementation.
-• Poor understanding of heuristic and relaxation approaches for high dimensional
+* Poor understanding of heuristic and relaxation approaches for high dimensional
 approximation.
-• Algorithms not optimized for the known structure of datasets (long tailed degree
+* Algorithms not optimized for the known structure of datasets (long tailed degree
 distributions, lack of medium scale clustering, etc.)
 
 Recent advances in optimization have suggested that it might be possible to execute
 terabyte scale problems in a mission actionable time. This topic seeks to leverage these
 advances to discover new theoretical approaches to algorithmic construction. Focus areas
 include, but are not limited to:
-• Optimization algorithmic design tailored to large scale parallel implementations.
-• Stochastic preconditioning and other randomized approaches enabling the
+* Optimization algorithmic design tailored to large scale parallel implementations.
+* Stochastic preconditioning and other randomized approaches enabling the
 breaking of classical theoretical scaling ceilings.
-• Convex relaxations of non-convex problems and a complete mathematical
+* Convex relaxations of non-convex problems and a complete mathematical
 understanding of the relationship between exact and relaxed objective functions.
-• The leveraging of prior dataset knowledge for algorithmic speedup.
-• Higher risk approaches such as numerical algebraic geometry.
+* The leveraging of prior dataset knowledge for algorithmic speedup.
+* Higher risk approaches such as numerical algebraic geometry.
