@@ -1,12 +1,18 @@
 Info on early career and/or young faculty awards
 
 ### Opportunity list
+* [doe-os ecr: 2015](#meeting-doe-os-2016)
 * [nasa ecf: 2015](#meeting-nasa-2015)
 * [darpa yfa: 2015](#meeting-darpa-2015)
 
 ***
 
+### doe-os ecr: doe-os-2015
+[http://science.energy.gov/early-career/](http://science.energy.gov/early-career/)
+
+
 ### nasa ecf: nasa-2015
+[http://nspires.nasaprs.com/external/solicitations/summary.do?method=init&solId={7A148E0E-4834-3C10-BADB-0C5060C4F961}&path=init](http://nspires.nasaprs.com/external/solicitations/summary.do?method=init&solId={7A148E0E-4834-3C10-BADB-0C5060C4F961}&path=init)
 
 ### darpa yfa: darpa-2015
 
@@ -21,7 +27,7 @@ Bibliography and up to 3 relevant papers are not included in page limit.
 
 * Due April 13
 
-Topic areas (questions to (DARPA-RA-15-32@darpa.mil)[DARPA-RA-15-32@darpa.mil])
+Topic areas (questions to [DARPA-RA-15-32@darpa.mil](DARPA-RA-15-32@darpa.mil))
 
 On npage 17, Technical Area Twenty Two: _New Theoretical Approaches to High-Dimensional
 Optimization_: DARPA seeks theoretical research into new technical approaches to
