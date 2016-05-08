@@ -1,1 +1,15 @@
-iuse2014
+*.out
+*.ppt
+*.pptx
+*.aux
+*.nav
+*.log
+*.pdf
+*.snm
+*.synctex.gz
+*.tex.bak
+*.toc
+*.vrb
+*.bbl
+*.blg
+*.bib.bak
