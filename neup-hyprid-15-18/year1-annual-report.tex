@@ -182,16 +182,41 @@ Particles in $\phi^{\dagger}_{\Omega}$ include the impact of how the direction t
 which should allow for more effective Monte Carlo transport when angular effects are important. 
 Note that in an isotropic system, $\phi^{\dagger}_{\Omega}$ will be essentially the same as $\phi^{\dagger}$. 
 
+The UC Berkeley personnel working on this project are doctoral candidate Madicken Munk, undergraduate Garrett Baltz, and researcher Richard Vasques. We are being supported by Tom Evans and Scott Mosher at Oak Ridge National Laboratory (ORNL). 
 
 \section{Significant Developments}
 \label{sect::sig-devel}
-Developments that have a significant favorable impact on the project.
 
-The main developments that have a significant favorable impact on the project 
+As of December 31, 2016, there have been three main developments that have a significant favorable impact on the project:
+\begin{enumerate}
+\item Background research is completed\\
+Completion of background research means that we have a full picture of past methods, current methods, and additional ideas to try if this method proves to perform less well than we would like or not well enough in certain situations.
+This piece is also essential for inclusion in publications and Ms.\ Munk's dissertation.
+ 
+\item Code implementation is nearly completed\\
+Full implementation of the new method is required to conduct testing and impact studies. 
+Significant progress here is key to project success.
+Exnihilo, the deterministic code supplying adjoint flux values for weight windows, has been successfully modified to store and write adjoint flux (previously the only output was scalar flux). 
+Further, an integration utility that implements Eqn.~\eqref{eq:angularhybrid} is also complete. 
+The remaining piece is to automate the interface between the integration utility and ADVANTG, which will allow the full method to be used seamlessly using only ADVANTG input files. 
+
+\item A large, representative test problem input specification is complete\\
+The main item of interest is how this work will effect storage cask simulation. 
+We have a full spent fuel storage cask model with overpack constructed in the input format required for ADVANTG. 
+We started with a SCALE cask model and added an overpack, including rebar. 
+This model was contributed back to ORNL's cask modeling library. 
+Next, this model was converted to MCNP input syntax for use with ADVANTG.
+We are now ready to start conducting impact calculations.
+\end{enumerate}
+
+
 
 \section{Performance Comparison}
 \label{sect::perf-comp} 
 A written comparison of the actual project accomplishments with the project goals and objectives established for the reporting period; if goals and/or objectives for the reporting period were not met, a detailed description of the variance shall be provided. 
+
+We set the following goals for the project 
+
 
 \section{Accomplishments}
 \label{sect::accomplishments}
@@ -312,6 +337,8 @@ c)	Networks or collaborations fostered. \\
 d)	Technologies/Techniques (identify and describe each). \\
 e)	Inventions/Patent Applications (identify and describe with date of application) \\
 f)	Other products, such as data or databases, physical collections, audio or video, software or NetWare, models, educational aid or curricula, instruments or equipment (identify and describe).
+
+Other products: \href{https://github.com/munkm/caskmodels}{https://github.com/munkm/caskmodels}
 
 %Publications: PHYSOR 2016 paper, ``FW/CADIS-$\Omega$: AN ANGLE-INFORMED HYBRID METHOD FOR DEEP-PENETRATION RADIATION TRANSPORT" can be found here\\ \href{http://munkm.github.io/papers/munk_physor16.pdf}{http://munkm.github.io/papers/munk\_physor16.pdf}
 
