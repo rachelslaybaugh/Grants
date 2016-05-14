@@ -100,9 +100,9 @@
 %------------------------------------------------------------------------------
 %
 %------------------------------------------------------------------------------
-\section*{Executive Summary}
-\label{sect::summary}
-\clearpage
+%\section*{Executive Summary}
+%\label{sect::summary}
+%\clearpage
 
 \section{Project Description}
 \label{sect::project}
@@ -368,33 +368,60 @@ He will continue to be partially supported on this project throughout year 2, wh
 % ---------------------------------------------------
 \section{Schedule Status}
 \label{sect::schedule}
-Schedule Status.  List milestones, anticipated completion dates and actual completion dates.  If you submitted a project management plan with your application, you must use this plan to report schedule and budget variances.   
+%Schedule Status.  List milestones, anticipated completion dates and actual completion dates.  If you submitted a project management plan with your application, you must use this plan to report schedule and budget variances.   
 
+As discussed in Section~\ref{sect::accomplishments}, the project is on schedule and we anticipate making future milestone deadlines.
+
+
+% ---------------------------------------------------
 \section{Changes}
 \label{sect::changes}
-Describe any changes during the reporting period in project approach and the reasons for these changes.  Remember, significant changes to the project objectives and scope require prior approval by the Contracting Officer. 
+%Describe any changes during the reporting period in project approach and the reasons for these changes.  Remember, significant changes to the project objectives and scope require prior approval by the Contracting Officer. 
 
+The main change to the project scope is that we no longer plan to implement our method in MAVRIC~\cite{peplow_mavric_2011}, which is part of the SCALE package~\cite{SCALE}, and will only implement in ADVANTG. Originally, we had planned to use both because implementing in one is not much more difficult than implementing in another. However, we have since realized that outside of ORNL people are using ADVANTG more frequently than MAVRIC. Further, Douglas Peplow, the lead MAVRIC developer, has changed roles at ORNL and is no longer on this project. For these reasons the additional work to include MAVRIC is (a) larger and (b) unlikely to be worth it. We are therefore only focusing on ADVANTG. We anticipate the impact of this change to be negligible.
+
+
+% ---------------------------------------------------
 \section{Anticipated Issues}
 \label{sect::schedule}
-6.	Describe any actual or anticipated problems or delays and any actions taken or plan to resolve them 
+%Describe any actual or anticipated problems or delays and any actions taken or plan to resolve them.
 
+We had some initial delay in getting personnel in place at Berkeley, but that is resolved. We do not anticipate further problems or delays in that regard.
+
+The largest problem we have encountered has been in building the software on the local cluster at Berkeley. The Exnihilo-ADVANTG system is fairly complex, requiring many software support packages. The software developers use gnu compilers (e.g.\ gcc), but the cluster at Berkeley, called Savio, uses Intel compilers. This has caused a very long delay while we work with the Savio team to resolve all of the software issues. We are still coming up with a long term solution that will be rapid and easy to use.
+
+
+% ---------------------------------------------------
 \section{Personnel Changes}
 \label{sect::personnel}
-Describe any absence or changes of key personnel or changes in consortium/teaming arrangements during the reporting period. 
+%Describe any absence or changes of key personnel or changes in consortium/teaming arrangements during the reporting period. 
 
+Douglas Peplow changed roles inside of ORNL and is no longer part the project. Dr.\ Peplow was in charge of the MAVRIC integration piece, which we have now cut from the project. We have been working with John Scaglione and Josh Jarrell to coordinate our cask models. Finally, Seth Johnson and Tara Pandya (all at ORNL) to aid with Exnihilo-ADVANTG integration as well.
+
+
+% ---------------------------------------------------
 \section{Products}
 \label{sect::products}
-List and describe any product produced or technology transfer activities accomplished during this reporting period, such as: \\
-a)	Publications (list journal name, volume, issue); conference papers; or other public releases of results.  Attach or send copies of the public releases to the DOE Program Manager. \\
-b)	Web site or other Internet sites (list the URL) that reflect the results of this project. \\
-c)	Networks or collaborations fostered. \\
-d)	Technologies/Techniques (identify and describe each). \\
-e)	Inventions/Patent Applications (identify and describe with date of application) \\
-f)	Other products, such as data or databases, physical collections, audio or video, software or NetWare, models, educational aid or curricula, instruments or equipment (identify and describe).
-
-Other products: \href{https://github.com/munkm/caskmodels}{https://github.com/munkm/caskmodels}
-
+%List and describe any product produced or technology transfer activities accomplished during this reporting period, such as: \\
+%a)	Publications (list journal name, volume, issue); conference papers; or other public releases of results.  Attach or send copies of the public releases to the DOE Program Manager. \\
 %Publications: PHYSOR 2016 paper, ``FW/CADIS-$\Omega$: AN ANGLE-INFORMED HYBRID METHOD FOR DEEP-PENETRATION RADIATION TRANSPORT" can be found here\\ \href{http://munkm.github.io/papers/munk_physor16.pdf}{http://munkm.github.io/papers/munk\_physor16.pdf}
+%b)	Web site or other Internet sites (list the URL) that reflect the results of this project. \\
+\textit{Website:} Our primary product up until December 2015 has been our GitHub website: \\\href{https://github.com/munkm/caskmodels}{https://github.com/munkm/caskmodels}. This contains code use information, brainstorming, publicly-available details about the casks, process development, and citations. 
+
+%c)	Networks or collaborations fostered. \\
+\textit{Networks or collaborations:} We have grown the collaboration between ORNL and UCB, with Ms.\ Munk spending a few months at ORNL learning the codes and building our network.
+%d)	Technologies/Techniques (identify and describe each). \\
+
+\textit{Technologies or Techniques:} As described in the proposal, the new method is our main technology being developed. 
+%e)	Inventions/Patent Applications (identify and describe with date of application) \\
+
+%f)	Other products, such as data or databases, physical collections, audio or video, software or NetWare, models, educational aid or curricula, instruments or equipment (identify and describe).
+\textit{Other products:} The full cask model we developed is a valuable ``other product" that has been contributed back to ORNL.
+
+
+
+
+
 
 
 \bibliographystyle{physor2016}
