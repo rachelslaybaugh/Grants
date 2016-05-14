@@ -139,7 +139,8 @@ w_0(\vec {r} ,E)  = \frac{q}{\hat{q}} \\
 \label{eq:WW}
 \end{equation}
 \end{subequations}
-where $\hat{q}$ is the biased source distribution, $w_0$ is the starting weight of the particles, $\hat{w}$ is the target weight of the particles, and $R$ is the response of interest.
+where $\hat{q}$ is the biased source distribution, $w_0$ is the starting weight of the particles, $\hat{w}$ is the target weight of the particles, and $R$ is the response of interest. 
+For current implementations, these items are a function of space and energy only.
 
 For problems with strong anisotropies in the particle flux, the importance map and biased source developed using the space/energy treatment above may not represent the real importance well enough to sufficiently improve performance in the Monte Carlo calculation. 
 Note that because the \textit{scalar} adjoint flux is used in Eqns.~\eqref{eq:CADISmethod}, the angular dependence of the importance function is not retained. 
@@ -182,21 +183,20 @@ Particles in $\phi^{\dagger}_{\Omega}$ include the impact of how the direction t
 which should allow for more effective Monte Carlo transport when angular effects are important. 
 Note that in an isotropic system, $\phi^{\dagger}_{\Omega}$ will be essentially the same as $\phi^{\dagger}$. 
 
-The UC Berkeley personnel working on this project are doctoral candidate Madicken Munk, undergraduate Garrett Baltz, and researcher Richard Vasques. We are being supported by Tom Evans and Scott Mosher at Oak Ridge National Laboratory (ORNL). 
-
 
 % ---------------------------------------------------
 \section{Significant Developments}
 \label{sect::sig-devel}
 
-As of December 31, 2015, there have been three main developments that have a significant favorable impact on the project:
+As of December 31, 2015, there have been three main developments that have a significant favorable impact on the project. Note that 
+the UC Berkeley personnel working on this project are PI Rachel Slaybaugh, doctoral candidate Madicken Munk, undergraduate Garrett Baltz, and researcher Richard Vasques. We are being supported by Tom Evans and Scott Mosher at Oak Ridge National Laboratory (ORNL). 
 \begin{enumerate}
-\item Background research is completed\\
+\item Background research is complete\\
 Completion of background research means that we have a full picture of past methods, current methods, and additional ideas to try if this method proves to perform less well than we would like or not well enough in certain situations.
 This piece is also essential for inclusion in publications and Ms.\ Munk's dissertation.
  
-\item Code implementation is nearly completed\\
-Full implementation of the new method is required to conduct testing and impact studies. 
+\item Code implementation is nearly complete\\
+Full implementation of the new method is required to conduct testing and impact studies quickly. 
 Significant progress here is key to project success.
 Exnihilo, the deterministic code supplying adjoint flux values for weight windows, has been successfully modified to store and write adjoint flux (previously the only output was scalar flux). 
 Further, an integration utility that implements Eqn.~\eqref{eq:angularhybrid} is also complete. 
@@ -208,7 +208,7 @@ We have a full spent fuel storage cask model with overpack constructed in the in
 We started with a SCALE cask model and added an overpack, including rebar. 
 This model was contributed back to ORNL's cask modeling library. 
 Next, this model was converted to MCNP input syntax for use with ADVANTG.
-We are now ready to start conducting impact calculations.
+With this model we are ready to start conducting impact calculations.
 \end{enumerate}
 
 
@@ -242,22 +242,24 @@ Milestones for the project are given in Table~\ref{tab:milestones}
 \end{center}
 \end{table}
 
-Code implementation, testing, and documentation began on schedule and is on pace. As mentioned, by December 31, 2015 Exnihilo had been modified and a the required integration script had been created. Associated unit tests for those pieces of software were implemented. Documentation is an ongoing and integral part of our development practices that will continue in sync with implementation. 
+Code implementation, testing, and documentation began on schedule and is on pace. 
+As mentioned, by December 31, 2015 Exnihilo had been modified and the required integration script had been created along with associated unit tests. 
+Documentation is an ongoing and integral part of our development practices that will continue in sync with implementation. 
 
 We changed the end date of the Background Research milestone to 9/30/2016 as it became clear that, while nearly all of the background research was completed by 6/30/2015, additional research was needed as method development continued.
 That is, as implementation progressed, more background information was occasionally needed. 
 This change in deadline did not impact project performance, but reflects the reality of continued information gathering.
 
-We also started the Baseline calculations work ahead of schedule. 
+We started the Baseline calculations work ahead of schedule. 
 We already received the cask model and updated it for use in calculations. 
-This specific model will be used in both the Baseline and New method calculations.  This was several months worth of work, so having that completed already positions us very well for being potentially being able to do more testing than originally planned. 
+This specific model will be used in both the Baseline and New method calculations.  Creating the input flies was several months worth of work, so having that completed already positions us very well for potentially being able to do more testing than originally planned. 
 
-By December we started the first new method calculations, as promised in our detailed activity plans submitted on \href{https://www.picsne.com}{https://www.picsne.com}. 
+By December, we started the first New Method calculations, as promised in our detailed activity plans submitted on \href{https://www.picsne.com}{https://www.picsne.com}. 
 This first set of results will be submitted to the PHYSOR 2016 reactor physics topical meeting, which will be held in Sun Valley, ID on May 1-5, 2016 \\(\href{http://www.physor2016.org/}{http://www.physor2016.org/}). 
 
 Our major milestone problem has been the submission of this report. 
 The Principle Investigator (PI) failed to record that an Annual report was required and, as a result, did not begin the report until after the due date. 
-The PI is no clearly aware of the need for the timely submission of the Year 2 annual report and will budget time accordingly.
+The PI is now clearly aware of the need for the timely submission of the Year 2 annual report and will budget time accordingly.
 
 
 % ---------------------------------------------------
@@ -360,7 +362,7 @@ Table~\ref{tab:costs} gives the proposed and actual project costs. The first col
 \end{table}
 
 We are currently \$42,171.50 underspent compared to the budget (positive values in Table~\ref{tab:differences} are amount underspent). 
-The primary reason for underspending is the amount of time it took to identify an appropriate project researcher. 
+The primary reason for underspending is the length of time it took to identify an appropriate project researcher. 
 Dr.\ Richard Vasques was hired in September 2015 and works part time on this project.
 He will continue to be partially supported on this project throughout year 2, which we expect to align predicted spending with budgeted spending. 
 
@@ -378,7 +380,7 @@ As discussed in Section~\ref{sect::accomplishments}, the project is on schedule 
 \label{sect::changes}
 %Describe any changes during the reporting period in project approach and the reasons for these changes.  Remember, significant changes to the project objectives and scope require prior approval by the Contracting Officer. 
 
-The main change to the project scope is that we no longer plan to implement our method in MAVRIC~\cite{peplow_mavric_2011}, which is part of the SCALE package~\cite{SCALE}, and will only implement in ADVANTG. Originally, we had planned to use both because implementing in one is not much more difficult than implementing in another. However, we have since realized that outside of ORNL people are using ADVANTG more frequently than MAVRIC. Further, Douglas Peplow, the lead MAVRIC developer, has changed roles at ORNL and is no longer on this project. For these reasons the additional work to include MAVRIC is (a) larger and (b) unlikely to be worth it. We are therefore only focusing on ADVANTG. We anticipate the impact of this change to be negligible.
+The main change to the project scope is that we no longer plan to implement our method in MAVRIC~\cite{peplow_mavric_2011}, which is part of the SCALE package~\cite{SCALE}, and will only implement in ADVANTG. Originally, we had planned to use both because implementing in one is not much more difficult than implementing in another. However, we have since realized that outside of ORNL people are using ADVANTG more frequently than MAVRIC. Further, Douglas Peplow, the lead MAVRIC developer, has changed roles at ORNL and is no longer on this project. For these reasons the additional work to include MAVRIC is (a) larger than when we started and (b) unlikely to be worth it. We are therefore only focusing on ADVANTG. We anticipate the impact of this change to be negligible.
 
 
 % ---------------------------------------------------
@@ -396,7 +398,7 @@ The largest problem we have encountered has been in building the software on the
 \label{sect::personnel}
 %Describe any absence or changes of key personnel or changes in consortium/teaming arrangements during the reporting period. 
 
-Douglas Peplow changed roles inside of ORNL and is no longer part the project. Dr.\ Peplow was in charge of the MAVRIC integration piece, which we have now cut from the project. We have been working with John Scaglione and Josh Jarrell to coordinate our cask models. Finally, Seth Johnson and Tara Pandya (all at ORNL) to aid with Exnihilo-ADVANTG integration as well.
+Douglas Peplow changed roles inside of ORNL and is no longer part the project. Dr.\ Peplow was in charge of the MAVRIC integration piece, which we have now cut from the project. We have been working with John Scaglione and Josh Jarrell to coordinate our cask models. Finally, Seth Johnson and Tara Pandya (all at ORNL) are now interfacing with UCB about Exnihilo-ADVANTG integration.
 
 
 % ---------------------------------------------------
@@ -406,7 +408,7 @@ Douglas Peplow changed roles inside of ORNL and is no longer part the project. D
 %a)	Publications (list journal name, volume, issue); conference papers; or other public releases of results.  Attach or send copies of the public releases to the DOE Program Manager. \\
 %Publications: PHYSOR 2016 paper, ``FW/CADIS-$\Omega$: AN ANGLE-INFORMED HYBRID METHOD FOR DEEP-PENETRATION RADIATION TRANSPORT" can be found here\\ \href{http://munkm.github.io/papers/munk_physor16.pdf}{http://munkm.github.io/papers/munk\_physor16.pdf}
 %b)	Web site or other Internet sites (list the URL) that reflect the results of this project. \\
-\textit{Website:} Our primary product up until December 2015 has been our GitHub website: \\\href{https://github.com/munkm/caskmodels}{https://github.com/munkm/caskmodels}. This contains code use information, brainstorming, publicly-available details about the casks, process development, and citations. 
+\textit{Website:} Our primary product through December 2015 has been our GitHub website: \\\href{https://github.com/munkm/caskmodels}{https://github.com/munkm/caskmodels}. This contains code use information, brainstorming, publicly-available details about the cask, process development, and citations. 
 
 %c)	Networks or collaborations fostered. \\
 \textit{Networks or collaborations:} We have grown the collaboration between ORNL and UCB, with Ms.\ Munk spending a few months at ORNL learning the codes and building our network.
@@ -416,7 +418,7 @@ Douglas Peplow changed roles inside of ORNL and is no longer part the project. D
 %e)	Inventions/Patent Applications (identify and describe with date of application) \\
 
 %f)	Other products, such as data or databases, physical collections, audio or video, software or NetWare, models, educational aid or curricula, instruments or equipment (identify and describe).
-\textit{Other products:} The full cask model we developed is a valuable ``other product" that has been contributed back to ORNL.
+\textit{Other products:} The full cask model we developed is a valuable ``other product", which has been contributed back to ORNL for use by the wider community.
 
 
 
