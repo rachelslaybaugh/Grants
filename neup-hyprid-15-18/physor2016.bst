@@ -965,22 +965,9 @@ FUNCTION {format.organization.address}
 
 STRINGS {oldname}
 
-FUNCTION {name.or.dash}
-{ 's :=
-   oldname empty$
-     { s 'oldname := s }
-     { s oldname =
-         { "---" }
-         { s 'oldname := s }
-       if$
-     }
-   if$
-}
-
 FUNCTION {article}
 { output.bibitem
   format.authors "author" output.check
-  name.or.dash
   new.block
   format.title "title" output.check
   new.block
@@ -1009,10 +996,8 @@ FUNCTION {book}
 { output.bibitem
   author empty$
     { format.editors "author and editor" output.check
-      name.or.dash
     }
     { format.authors output.nonnull
-      name.or.dash
       crossref missing$
         { "author and editor" editor either.or.check }
         'skip$
@@ -1046,7 +1031,6 @@ FUNCTION {book}
 FUNCTION {booklet}
 { output.bibitem
   format.authors output
-  name.or.dash
   new.block
   format.title "title" output.check
   new.block
@@ -1066,10 +1050,8 @@ FUNCTION {inbook}
 { output.bibitem
   author empty$
     { format.editors "author and editor" output.check
-      name.or.dash
     }
     { format.authors output.nonnull
-      name.or.dash
       crossref missing$
         { "author and editor" editor either.or.check }
         'skip$
@@ -1110,7 +1092,6 @@ FUNCTION {inbook}
 FUNCTION {incollection}
 { output.bibitem
   format.authors "author" output.check
-  name.or.dash
   new.block
   format.title "title" output.check
   new.block
@@ -1138,7 +1119,6 @@ FUNCTION {incollection}
 FUNCTION {inproceedings}
 { output.bibitem
   format.authors "author" output.check
-  name.or.dash
   new.block
   format.title "title" output.check
   new.block
@@ -1181,7 +1161,6 @@ FUNCTION {manual}
     }
     { format.authors output.nonnull }
   if$
-  name.or.dash
   new.block
   format.btitle "title" output.check
   author empty$
@@ -1212,7 +1191,6 @@ FUNCTION {manual}
 FUNCTION {mastersthesis}
 { output.bibitem
   format.authors "author" output.check
-  name.or.dash
   new.block
   format.btitle
   "title" output.check
@@ -1232,7 +1210,6 @@ FUNCTION {mastersthesis}
 FUNCTION {misc}
 { output.bibitem
   format.authors output
-  name.or.dash
   title howpublished new.block.checkb
   format.title output
   howpublished new.block.checka
@@ -1249,7 +1226,6 @@ FUNCTION {misc}
 FUNCTION {phdthesis}
 { output.bibitem
   format.authors "author" output.check
-  name.or.dash
   new.block
   format.btitle
   "title" output.check
@@ -1273,7 +1249,6 @@ FUNCTION {proceedings}
     }
     { format.editors output.nonnull }
   if$
-  name.or.dash
   new.block
   format.btitle "title" output.check
   format.bvolume output
@@ -1313,7 +1288,6 @@ FUNCTION {proceedings}
 FUNCTION {techreport}
 { output.bibitem
   format.authors "author" output.check
-  name.or.dash
   new.block
   format.btitle
   "title" output.check
@@ -1333,7 +1307,6 @@ FUNCTION {techreport}
 FUNCTION {unpublished}
 { output.bibitem
   format.authors "author" output.check
-  name.or.dash
   new.block
   format.title "title" output.check
   new.block
