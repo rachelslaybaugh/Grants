@@ -332,8 +332,7 @@ We've started running calculations with this model.
 %A written comparison of the actual project accomplishments with the project goals and objectives established for the reporting period; if goals and/or objectives for the reporting period were not met, a detailed description of the variance shall be provided. 
 Project performance has lagged behind schedule in some areas from a timeline perspective.
 This section will discuss the causes as well as correcting steps that have been taken.
-However, if one looks at the cost over the entire project, which will be further discussed below, our progress is on pace with expenditures. 
-Milestones for the project are given in Table~\ref{tab:milestones}
+Milestones for the project are given in \autoref{tab:milestones}.
 \begin{table}[h!]
 \begin{center}
 \caption{Project Milestone Status as of Year \yr}
@@ -358,29 +357,42 @@ M2 & Impact studies & 3/31/18 & -- \\
 \end{center}
 \end{table}
 
-Under the Code M2 milestone, background research, testing and documentation, and implementation, began on schedule and are now completed. However, these items were completed behind schedule. 
+Under the \textit{M2 Code} milestone, background research, testing and documentation, and implementation, began on schedule and are now completed. 
+However, these items were all completed behind schedule. 
 The main challenge in this area was the difficulty of building the Exnihilo software stack on certain compute architectures. 
 We had originally planned to use Savio \cite{savio}, a condo-model cluster at UC Berkeley. 
 However, Savio uses Intel compilers while Exnihilo really needs gnu compilers. 
-As a result, we lost about 3 months of time--causing us to be late on implementation, testing, and documentation (which had previously been ahead of schedule).
+As a result, we lost about three months of time--causing us to be late on implementation and testing and documentation (which had previously been ahead of schedule).
 Ultimately, we abandoned the pursuit of using Savio and chose to build the software on computers at ORNL.
+These delays have had a negative timeline impact on the entire project. 
 
-
-
-We changed the end date of the Background Research milestone to 9/30/2016 as it became clear that, while nearly all of the background research was completed by 6/30/2015, additional research was needed as method development continued.
-That is, as implementation progressed, more background information was occasionally needed. 
+The background research was reported as late because of the nature of background research. 
+Ms.\ Munk, the primary student working on this, had completed background research before doing much code work.
+However, because she would need to look up new things as implementation progressed, we realized it was not technically ``complete''.
+At the beginning of the year the need to conduct more background research abated. 
 This change in deadline did not impact project performance, but reflects the reality of continued information gathering.
 
-We started the Baseline calculations work ahead of schedule. 
-We already received the cask model and updated it for use in calculations. 
-This specific model will be used in both the Baseline and New method calculations.  Creating the input flies was several months worth of work, so having that completed already positions us very well for potentially being able to do more testing than originally planned. 
+We have completed the \textit{M2 Testing} work very close to on schedule. 
+Inputs for all test problems are created, and initial runs completed (both baseline and new). 
+Note that the new method calculations were delayed for the same reason that implementation was delayed.
+We were unable to use the code before we had completed implementation. 
 
-By December, we started the first New Method calculations, as promised in our detailed activity plans submitted on \href{https://www.picsne.com}{https://www.picsne.com}. 
-This first set of results will be submitted to the PHYSOR 2016 reactor physics topical meeting, which will be held in Sun Valley, ID on May 1-5, 2016 \\(\href{http://www.physor2016.org/}{http://www.physor2016.org/}). 
+We have started the \textit{M2 Angular Sensitivity Investigation}, but this will also be completed behind schedule. 
+This delay is in part from the implementation delay. 
+We have also realized that many of the initial calculations did not use enough particles, so many problems need to be re-run for better results.
+Finally, we paused this work when we realized we needed a better way of quantifying method performance. 
+The development of the anisotropy metrics discussed in the \autoref{sect::sig-devel} section will enable us to do this.
+Thus, we are much better setup to be able to appropriately quantify the angular sensitivity and method performance. 
 
-Our major milestone problem has been the submission of this report. 
+We anticipate that the \textit{M2 Impact Studies} will be completed on time. 
+As mentioned, we already received the cask model and updated it for use in calculations. 
+Creating the input flies was several months worth of work, so having that completed already positions us very well for potentially being able to do more testing than originally planned. 
+
+
+Last year the \textit{M2 Year 1 Annual Report} was submitted about two weeks late.  
 The Principle Investigator (PI) failed to record that an Annual report was required and, as a result, did not begin the report until after the due date. 
-The PI is now clearly aware of the need for the timely submission of the Year 2 annual report and will budget time accordingly.
+The PI is now clearly aware of the need for the timely submission of the \textit{Year 2 Annual Report} budgeted time accordingly.
+The PI will take the same actions for the Final report
 
 
 % ---------------------------------------------------
