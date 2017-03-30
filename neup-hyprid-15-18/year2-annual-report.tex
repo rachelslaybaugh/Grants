@@ -244,6 +244,7 @@ We can see the impact of this newly-defined adjoint flux by looking at the maze 
 In this case it is clear that particles going out the back of the problem are not expected to contribute to the detector. This is the kind of result that makes sense, and demonstrates the appropriate incorporation of angular information.
 Furthermore, we see in \autoref{fig:maze-re} that this is reflected in CADIS-$\Omega$ obtaining a lower relative error than either CADIS or analog MC for the same number of particles.
 Finally, \co obtained a FOM of 145, while CADIS's was only 5.1. 
+This illustrates the type of improvement this project can achieve. 
 \begin{figure}
 \centering
 \begin{subfigure}{.25\textwidth}
@@ -268,20 +269,42 @@ Finally, \co obtained a FOM of 145, while CADIS's was only 5.1.
 \section{Significant Developments}
 \label{sect::sig-devel}
 
-As of December 31, 2016, there have been three main developments that have a significant favorable impact on the project. Note that 
-the UC Berkeley personnel working on this project are PI Rachel Slaybaugh, doctoral candidate Madicken Munk, undergraduate Garrett Baltz, and researcher Richard Vasques. We are being supported by Tom Evans and Scott Mosher at Oak Ridge National Laboratory (ORNL). 
+As of December 31, 2016, there have been several big developments that have a significant favorable impact on the project. 
+Note that the UC Berkeley personnel working on this project are PI Rachel Slaybaugh, doctoral candidate Madicken Munk, first year student Marissa Ramirez-Zweiger, and research scientist Richard Vasques. 
+We are being supported by Tom Evans, Tara Pandya, Seth Johnson, and Scott Mosher at Oak Ridge National Laboratory (ORNL). 
 \begin{enumerate}
-\item Background research is complete\\
-Completion of background research means that we have a full picture of past methods, current methods, and additional ideas to try if this method proves to perform less well than we would like or not well enough in certain situations.
-This piece is also essential for inclusion in publications and Ms.\ Munk's dissertation.
- 
-\item Code implementation is nearly complete\\
-Full implementation of the new method is required to conduct testing and impact studies quickly. 
-Significant progress here is key to project success.
+\item Code implementation is complete\\
 Exnihilo, the deterministic code supplying adjoint flux values for weight windows, has been successfully modified to store and write adjoint flux (previously the only output was scalar flux). 
 Further, an integration utility that implements Eqn.~\eqref{eq:angularhybrid} is also complete. 
-The remaining piece is to automate the interface between the integration utility and ADVANTG, which will allow the full method to be used seamlessly using only ADVANTG input files. 
+Finally, we have automated the interface between the integration utility and ADVANTG, which will allow the full method to be used seamlessly using only ADVANTG input files. 
 
+\item Software testing and documentation is complete\\
+To ensure that the software is both correct and usable, we have tested the software--implementing unit tests where appropriate--and documented how to use the software. 
+We have compared results from our new method with results we know to be correct. 
+Further, we have developed scripts to automate the execution of our test problems as well as plotting and analysis of the results. 
+Those scripts will be made available once we have finalized which plots and tests we find to be most valuable. 
+ 
+\item Method characterization is fully underway \\
+We have a collection of small problems that incorporate anisotropy in different ways and to different degrees to investigate the new method's performance. 
+Last year at this time we were not able to start calculations with the \co method. 
+Thus, we had run some analog and CADIS calculations only.
+Now, we have run all of our test problems with each method. 
+We are in the process of fine tuning: sorting out which problems we need to run with more particles, which ones we want to investigate more fully, etc.
+
+Further, we have developed a collection of metrics to characterize anisotropy. 
+Each metric can be used to help us characterize how our method preforms for what types of problems:
+      \begin{itemize}
+      \item Scalar Contributon Ratio: If the adjoint or forward angular flux is significantly peaked in $\vOmega$, this will result in a deviation between the numerator and denominator because there will be a multiplicative effect in the angular flux captured in $\Phi_{c}$ and not $\phi_{c}$.
+      \[\frac{\phi^{\dagger}(\vecr,E)\phi(\vecr,E)}{\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E)} = \frac{\phi_{c}}{\Phi_{c}}\]
+      
+      \item $M_{2} = \frac{\phi^{\dagger}_{\vOmega}(\vecr,E)}{\phi^{\dagger}(\vecr,E)}$
+      
+      \item $M_{3} = \frac{\max(\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E))}{\text{avg}(\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E))}$
+      
+       \item $M_{4} = \frac{\max(\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E))}{\min(\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E))}$
+      \end{itemize} 
+
+ 
 \item A large, representative test problem input specification is complete\\
 The main item of interest is how this work will effect storage cask simulation. 
 We have a full spent fuel storage cask model with overpack constructed in the input format required for ADVANTG. 
