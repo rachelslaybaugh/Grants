@@ -282,7 +282,7 @@ Finally, we have automated the interface between the integration utility and ADV
 To ensure that the software is both correct and usable, we have tested the software--implementing unit tests where appropriate--and documented how to use the software. 
 We have compared results from our new method with results we know to be correct. 
 Further, we have developed scripts to automate the execution of our test problems as well as plotting and analysis of the results. 
-Those scripts will be made available once we have finalized which plots and tests we find to be most valuable. 
+Those scripts are available at this github repository: \url{https://github.com/munkm/thesiscode}. 
  
 \item Method characterization is fully underway \\
 We have a collection of small problems that incorporate anisotropy in different ways and to different degrees to investigate the new method's performance. 
@@ -293,15 +293,26 @@ We are in the process of fine tuning: sorting out which problems we need to run 
 
 Further, we have developed a collection of metrics to characterize anisotropy. 
 Each metric can be used to help us characterize how our method preforms for what types of problems:
+\vspace*{-.5em}
       \begin{itemize}
       \item Scalar Contributon Ratio: If the adjoint or forward angular flux is significantly peaked in $\vOmega$, this will result in a deviation between the numerator and denominator because there will be a multiplicative effect in the angular flux captured in $\Phi_{c}$ and not $\phi_{c}$.
-      \[\frac{\phi^{\dagger}(\vecr,E)\phi(\vecr,E)}{\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E)} = \frac{\phi_{c}}{\Phi_{c}}\]
+      \[M_{1} = \frac{\phi^{\dagger}(\vecr,E)\phi(\vecr,E)}{\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E)} = \frac{\phi_{c}}{\Phi_{c}}\]
       
-      \item $M_{2} = \frac{\phi^{\dagger}_{\vOmega}(\vecr,E)}{\phi^{\dagger}(\vecr,E)}$
+      \item Adjoint Flux Ratio: metric for comparing which regions have significantly differing bias parameters in standard-adjoint and omega-adjoint situations. This metric will deviate from unity if the forward flux is anisotropic.
+      \[M_{2} = \frac{\phi^{\dagger}_{\vOmega}(\vecr,E)}{\phi^{\dagger}(\vecr,E)}\]
       
-      \item $M_{3} = \frac{\max(\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E))}{\text{avg}(\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E))}$
+      \item Maximum to Average Flux Ratios: the ratio between the maximum and average angular contributon flux in each space-energy voxel. The higher this quantity, the more peaked the contributon flux is in $\Omega$. 
+      \begin{align*}
+      \psi^{c} &= \psi^{\dagger}(\vecr,E, \vOmega)\psi(\vecr,E, \vOmega)\\
+      M_{3} &= \frac{\psi^c_{\max}}{\psi^{c}_{\text{avg}}}\\
+      M_{4} &=  \frac{\frac{\psi^{c}_{\max}}{\psi^{c}_{\text{avg}}}}{\frac{\psi^{\dagger}_{\max}}{\psi^{\dagger}_{\text{avg}}}} 
+      \end{align*} 
       
-       \item $M_{4} = \frac{\max(\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E))}{\min(\int_{\vOmega}\psi^{\dagger}(\vecr,\vOmega,E)\psi(\vecr,\vOmega,E))}$
+       \item Maximum to Minimum Flux Ratios: this quantity incorporates information about the behavior of the local maximum relative to the local minimum angular flux in each cell. This metric may be more appropriate to describe the anisotropy of the flux in cells where the distribution of flux values are not well reflected by the average flux.
+       \begin{align*}
+      M_{5} &= \frac{\psi^c_{\max}}{\psi^{c}_{\min}}\\
+      M_{4} &=  \frac{\frac{\psi^{c}_{\max}}{\psi^{c}_{\min}}}{\frac{\psi^{\dagger}_{\max}}{\psi^{\dagger}_{\min}}}
+       \end{align*}
       \end{itemize} 
 
  
@@ -311,7 +322,7 @@ We have a full spent fuel storage cask model with overpack constructed in the in
 We started with a SCALE cask model and added an overpack, including rebar. 
 This model was contributed back to ORNL's cask modeling library. 
 Next, this model was converted to MCNP input syntax for use with ADVANTG.
-With this model we are ready to start conducting impact calculations.
+We've started running calculations with this model.
 \end{enumerate}
 
 
@@ -319,7 +330,9 @@ With this model we are ready to start conducting impact calculations.
 \section{Performance Comparison}
 \label{sect::perf-comp} 
 %A written comparison of the actual project accomplishments with the project goals and objectives established for the reporting period; if goals and/or objectives for the reporting period were not met, a detailed description of the variance shall be provided. 
-Project performance has been at or ahead of schedule in nearly all areas. 
+Project performance has lagged behind schedule in some areas from a timeline perspective.
+This section will discuss the causes as well as correcting steps that have been taken.
+However, if one looks at the cost over the entire project, which will be further discussed below, our progress is on pace with expenditures. 
 Milestones for the project are given in Table~\ref{tab:milestones}
 \begin{table}[h!]
 \begin{center}
@@ -345,9 +358,14 @@ M2 & Impact studies & 3/31/18 & -- \\
 \end{center}
 \end{table}
 
-Code implementation, testing, and documentation began on schedule and is on pace. 
-As mentioned, by December 31, 2015 Exnihilo had been modified and the required integration script had been created along with associated unit tests. 
-Documentation is an ongoing and integral part of our development practices that will continue in sync with implementation. 
+Under the Code M2 milestone, background research, testing and documentation, and implementation, began on schedule and are now completed. However, these items were completed behind schedule. 
+The main challenge in this area was the difficulty of building the Exnihilo software stack on certain compute architectures. 
+We had originally planned to use Savio \cite{savio}, a condo-model cluster at UC Berkeley. 
+However, Savio uses Intel compilers while Exnihilo really needs gnu compilers. 
+As a result, we lost about 3 months of time--causing us to be late on implementation, testing, and documentation (which had previously been ahead of schedule).
+Ultimately, we abandoned the pursuit of using Savio and chose to build the software on computers at ORNL.
+
+
 
 We changed the end date of the Background Research milestone to 9/30/2016 as it became clear that, while nearly all of the background research was completed by 6/30/2015, additional research was needed as method development continued.
 That is, as implementation progressed, more background information was occasionally needed. 
@@ -370,7 +388,7 @@ The PI is now clearly aware of the need for the timely submission of the Year 2 
 \label{sect::accomplishments}
 %A discussion of what was accomplished under these goals and objectives established for this reporting period, including major activities, significant results, major findings or conclusions, key outcomes or other achievements.  This section should not contain any proprietary data or other information not subject to public release.  If such information is important to reporting progress, do not include the information, but include a note in the report advising the reader contact the Principal Investigator for further information. 
 
-The main accomplishments have been nearing completion of code implementation and completion of the MCNP cask model. Full details of the model, including references and process for model development, are all recorded in this github repository: \href{https://github.com/munkm/caskmodels}{https://github.com/munkm/caskmodels}. This record ensures provenance of the model, detailing the development, assumptions, construction process, barriers encountered, and final model. 
+The main accomplishments have been nearing completion of code implementation and completion of the MCNP cask model. Full details of the model, including references and process for model development, are all recorded in this github repository: \url{https://github.com/munkm/caskmodels}. This record ensures provenance of the model, detailing the development, assumptions, construction process, barriers encountered, and final model. 
 
 While not directly related to the project, Ms.\ Munk passed her PhD qualifying exam, the last major hurdle at UC Berkeley before the dissertation. This concrete personnel accomplishment forwards a side benefit of the project: training and development of the workforce. 
 
@@ -509,7 +527,7 @@ Douglas Peplow changed roles inside of ORNL and is no longer part the project. D
 \label{sect::products}
 %List and describe any product produced or technology transfer activities accomplished during this reporting period, such as: \\
 %a)	Publications (list journal name, volume, issue); conference papers; or other public releases of results.  Attach or send copies of the public releases to the DOE Program Manager. \\
-%Publications: PHYSOR 2016 paper, ``FW/CADIS-$\Omega$: AN ANGLE-INFORMED HYBRID METHOD FOR DEEP-PENETRATION RADIATION TRANSPORT" can be found here\\ \href{http://munkm.github.io/papers/munk_physor16.pdf}{http://munkm.github.io/papers/munk\_physor16.pdf}
+%Publications: PHYSOR 2016 paper, ``FW/CADIS-$\Omega$: AN ANGLE-INFORMED HYBRID METHOD FOR DEEP-PENETRATION RADIATION TRANSPORT" can be found here\\ \url{http://munkm.github.io/papers/munk\_physor16.pdf}
 %b)	Web site or other Internet sites (list the URL) that reflect the results of this project. \\
 \textit{Website:} Our primary product through December 2015 has been our GitHub website: \\\href{https://github.com/munkm/caskmodels}{https://github.com/munkm/caskmodels}. This contains code use information, brainstorming, publicly-available details about the cask, process development, and citations. 
 
