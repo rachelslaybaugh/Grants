@@ -6,7 +6,7 @@
 \usepackage{amsmath}
 \usepackage{bm}
 \usepackage{caption}
-\usepackage{subcaption}
+\usepackage{subcaption, paralist}
 
 \newcommand{\yr}{2}
 \newcommand{\ve}[1]{\ensuremath{\mathbf{#1}}}
@@ -388,7 +388,6 @@ We anticipate that the \textit{M2 Impact Studies} will be completed on time.
 As mentioned, we already received the cask model and updated it for use in calculations. 
 Creating the input flies was several months worth of work, so having that completed already positions us very well for potentially being able to do more testing than originally planned. 
 
-
 Last year the \textit{M2 Year 1 Annual Report} was submitted about two weeks late.  
 The Principle Investigator (PI) failed to record that an Annual report was required and, as a result, did not begin the report until after the due date. 
 The PI is now clearly aware of the need for the timely submission of the \textit{Year 2 Annual Report} budgeted time accordingly.
@@ -400,10 +399,18 @@ The PI will take the same actions for the Final report
 \label{sect::accomplishments}
 %A discussion of what was accomplished under these goals and objectives established for this reporting period, including major activities, significant results, major findings or conclusions, key outcomes or other achievements.  This section should not contain any proprietary data or other information not subject to public release.  If such information is important to reporting progress, do not include the information, but include a note in the report advising the reader contact the Principal Investigator for further information. 
 
-The main accomplishments have been nearing completion of code implementation and completion of the MCNP cask model. Full details of the model, including references and process for model development, are all recorded in this github repository: \url{https://github.com/munkm/caskmodels}. This record ensures provenance of the model, detailing the development, assumptions, construction process, barriers encountered, and final model. 
+The main accomplishments have been 
+\begin{compactitem}
+\item Completing code implementation, testing and documentation, and getting the software running on a computing platform we can use.
+\item Having all small test problems constructed and running in all versions of code use. 
+\item Publication of our first initial results in a peer-reviewed conference, PHYSOR: \url{http://munkm.github.io/papers/munk\_physor16.pdf}
+\item Establishing a set of anisotropy metrics to be able to accurately quantify performance. 
+\item Developing a suite of scripts to facilitate test execution and results plotting, as documented here: \url{https://github.com/munkm/thesiscode}.
+\end{compactitem}
 
-While not directly related to the project, Ms.\ Munk passed her PhD qualifying exam, the last major hurdle at UC Berkeley before the dissertation. This concrete personnel accomplishment forwards a side benefit of the project: training and development of the workforce. 
-
+With all of these items all of the parts and pieces are in place to quickly and meaningfully complete this project. 
+Ms.\ Munk will be completing her dissertation in the next several months.
+This will provide very detailed documentation of this work.
 
 % ---------------------------------------------------
 \section{Cost Status}
