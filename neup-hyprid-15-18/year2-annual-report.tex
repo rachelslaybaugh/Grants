@@ -120,7 +120,11 @@ The impact of streaming is amplified in arrays of casks because detectors can on
 Deterministic methods suffer from ray effects between the casks and detectors, making solutions unreliable. 
 Monte Carlo methods are challenged by getting particles out of the cask into the region of interest, and can therefore require unreasonably large calculation times to achieve acceptable statistical uncertainties in the computed tallies.
 
+This report describes current technology in \autoref{sect::current} and the mathematics of our new method in \autoref{sect::omega}. This is followed by significant developments in \autoref{sect::sig-devel}, a comparison of our projected vs.\ actual performance in \autoref{sect::perf-comp}, and results and accomplishments in \autoref{sect::accomplishments}. This is followed by the cost and schedule status in \autoref{sect::cost} and \autoref{sect::schedule}, respectively; changes in \autoref{sect::changes}, anticipated issues in \autoref{sect::issues}, personnel changes in \autoref{sect::personnel}, and finally, products in \autoref{sect::products}.  
+
+%------------------------------------
 \subsection{Current Technology}
+\label{sect::current}
 Cutting-edge variance reduction methods that speed up Monte Carlo calculations often use deterministic solutions to make weight window maps. 
 Perhaps the most widespread and accessible of these methods are the Consistent Adjoint Driven Importance Sampling (CADIS) \cite{wagner_automatic_1997,wagner_automated_1998,haghighat_monte_2003} and Forward-Weighted CADIS (FW-CADIS) \cite{wagner_forward-weighted_2007,wagner_forward-weighted_2009,wagner_forward-weighted_2010} methods. 
 These methods create consistently-biased source distributions and weight window targets using a coarse determinstic solution for the adjoint scalar flux, $\phi^{\dagger}$, as a measure of the importance. 
@@ -195,6 +199,7 @@ Interim used fuel installations exhibit strong angular anisotropies, and therefo
 
 %---------------------------------
 \subsection{CADIS-$\Omega$}
+\label{sect::omega}
 To do fast, accurate transport for used fuel monitoring, we need an importance map generated quickly using deterministic methods that captures the impact of angle in the importance information. 
 In this work we build on past methods but calculate the adjoint scalar flux in a way that has not been done before.
 
@@ -429,7 +434,7 @@ The main change to the project scope is that we no longer plan to implement our 
 
 % ---------------------------------------------------
 \section{Anticipated Issues}
-\label{sect::schedule}
+\label{sect::issues}
 %Describe any actual or anticipated problems or delays and any actions taken or plan to resolve them.
 
 We had some initial delay in getting personnel in place at Berkeley, but that is resolved. We do not anticipate further problems or delays in that regard.
