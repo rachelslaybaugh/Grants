@@ -1,4 +1,3 @@
-
 \documentclass[12pt]{article}
 
 \usepackage{physor2016}
@@ -7,6 +6,8 @@
 \usepackage{bm}
 \usepackage{caption}
 \usepackage{subcaption, paralist}
+\usepackage{tabularx}
+\usepackage{multirow}
 
 \newcommand{\yr}{2}
 \newcommand{\ve}[1]{\ensuremath{\mathbf{#1}}}
@@ -127,7 +128,7 @@ The main accomplishments in this project have been
 \item Publication of our first initial results in a peer-reviewed conference, PHYSOR: \url{http://munkm.github.io/papers/munk\_physor16.pdf}
 \item Established a set of anisotropy metrics and used them to quantify performance. 
 \item Developed a suite of scripts to facilitate test execution and results plotting, as documented here: \url{https://github.com/munkm/thesiscode}.
-\item Completion of the PhD of Dr.\ Madicken Munk.
+\item Completion of the PhD of Dr.\ Madicken Munk \cite{Munk2017}.
 \item Adoption of the developed method for use in other research projects.
 \end{compactitem}
 
@@ -142,8 +143,8 @@ We accomplished nearly all of the goals outlined in the project. We have yet to 
 \label{sect::project}
 %Summarize project activities for the entire period of funding, including original hypotheses, approaches used, problems encountered and departure from planned methodology, and an assessment of their impact on the project results. Include, if applicable, facts, figures, analyses, and assumptions used during the life of the project to support the conclusions.
 
-In this project, we developed a variance reduction method for computational neutral particle transport intended to improve the ability to design and operate systems in which particle streaming is important, such as monitoring systems for interim used fuel installations. 
-We used Exnihilo \cite{evans_denovo:_2010}, MCNP \cite{brown_mcnp_2002}, and ADVANTG \cite{mosher_new_2010}, which make our new tool widely available and easily usable. 
+In this project, we developed a variance reduction method for computational neutral particle transport to improve the ability to design and operate systems in which particle streaming is important, such as monitoring systems for interim used fuel installations. 
+We implemented the method in Exnihilo \cite{evans_denovo:_2010}, MCNP \cite{brown_mcnp_2002}, and ADVANTG \cite{mosher_new_2010}, which makes our new tool widely available and easily usable. 
 These innovative analysis tools will enable next generation nuclear material management for existing and future U.S.\ nuclear fuel cycles, minimizing proliferation and terrorism risk.
 
 Storage casks are particularly challenging for radiation transport calculations because they are characterized by dense shields followed by streaming paths to the detectors. 
@@ -151,7 +152,7 @@ The impact of streaming is amplified in arrays of casks because detectors can on
 Deterministic methods suffer from ray effects between the casks and detectors, making solutions unreliable. 
 Monte Carlo methods are challenged by getting particles out of the cask into the region of interest, and can therefore require unreasonably large calculation times to achieve acceptable statistical uncertainties in the computed tallies.
 
-This report describes current technology in \autoref{sect::current} and the mathematics of our new method in \autoref{sect::omega}. This is followed by significant developments in \autoref{sect::sig-devel}, a comparison of our projected vs.\ actual performance in \autoref{sect::perf-comp}, and results and accomplishments in \autoref{sect::accomplishments}. This is followed by the cost and schedule status in \autoref{sect::cost} and \autoref{sect::schedule}, respectively; changes in \autoref{sect::changes}, anticipated issues in \autoref{sect::issues}, personnel changes in \autoref{sect::personnel}, and finally, products in \autoref{sect::products}.  
+This report describes current technology in \autoref{sect::current} and the mathematics of our new method in \autoref{sect::omega}. This is followed by a short overview of the results and outcomes from this work in \autoref{sect::results}. Full details and all results can be found in Reference \cite{Munk2017}.
 
 %------------------------------------
 \subsection{Original Technology}
@@ -201,7 +202,7 @@ The drawback of this simplification is that, within a given space/energy cell, t
 However, if the angular dependence of the importance function were fully retained, the map would be very large (tens or hundreds of GB) and more costly to use in the Monte Carlo simulation. 
 
 An example of missing important angular behavior can be seen in this maze problem. 
-A 10MeV isotropic point source is next to a concrete maze followed by an NaI detector. 
+A 10 MeV isotropic point source is next to a concrete maze followed by an NaI detector. 
 This problem has vacuum boundary conditions. 
 In \autoref{fig:maze} one can see the geometry and forward flux. 
 \autoref{fig:orig-adj} shows the adjoint flux. 
@@ -292,35 +293,7 @@ This illustrates the type of improvement this project can achieve.
 \label{fig:adjoint}
 \end{figure}
 
-
-
-% ---------------------------------------------------
-\subsection{Significant Developments}
-\label{sect::sig-devel}
-
-As of December 31, 2016, there have been several big developments that have a significant favorable impact on the project. 
-Note that the UC Berkeley personnel working on this project are PI Rachel Slaybaugh, doctoral candidate Madicken Munk, first year student Marissa Ramirez-Zweiger, and research scientist Richard Vasques. 
-We are being supported by Tom Evans, Tara Pandya, Seth Johnson, and Scott Mosher at Oak Ridge National Laboratory (ORNL). 
-\begin{enumerate}
-\item Code implementation is complete\\
-Exnihilo, the deterministic code supplying adjoint flux values for weight windows, has been successfully modified to store and write adjoint flux (previously the only output was scalar flux). 
-Further, an integration utility that implements Eqn.~\eqref{eq:angularhybrid} is also complete. 
-Finally, we have automated the interface between the integration utility and ADVANTG, which will allow the full method to be used seamlessly using only ADVANTG input files. 
-
-\item Software testing and documentation is complete\\
-To ensure that the software is both correct and usable, we have tested the software--implementing unit tests where appropriate--and documented how to use the software. 
-We have compared results from our new method with results we know to be correct. 
-Further, we have developed scripts to automate the execution of our test problems as well as plotting and analysis of the results. 
-Those scripts are available at this github repository: \url{https://github.com/munkm/thesiscode}. 
- 
-\item Method characterization is fully underway \\
-We have a collection of small problems that incorporate anisotropy in different ways and to different degrees to investigate the new method's performance. 
-Last year at this time we were not able to start calculations with the \co method. 
-Thus, we had run some analog and CADIS calculations only.
-Now, we have run all of our test problems with each method. 
-We are in the process of fine tuning: sorting out which problems we need to run with more particles, which ones we want to investigate more fully, etc.
-
-Further, we have developed a collection of metrics to characterize anisotropy. 
+One of the additionally useful items developed in this work is a collection of metrics to characterize anisotropy. 
 Each metric can be used to help us characterize how our method preforms for what types of problems:
 \vspace*{-.5em}
       \begin{itemize}
@@ -344,17 +317,225 @@ Each metric can be used to help us characterize how our method preforms for what
        \end{align*}
       \end{itemize} 
  
-\item A large, representative test problem input specification is complete\\
-The main item of interest is how this work will effect storage cask simulation. 
-We have a full spent fuel storage cask model with overpack constructed in the input format required for ADVANTG. 
-We started with a SCALE cask model and added an overpack, including rebar. 
-This model was contributed back to ORNL's cask modeling library. 
-Next, this model was converted to MCNP input syntax for use with ADVANTG.
-We've started running calculations with this model.
-\end{enumerate}
+We used the Figure of Merit as well as these metrics to study a large number of test problems. 
+
+% ---------------------------------------------------
+\subsection{Results and Outcomes}
+\label{sect::results}
+
+The flux can have anisotropy resulting from more than one
+mechanism. We have identified several separate
+processes that affect the flux anisotropy. These processes can be grouped into
+three categories that can overlap in one problem:
+\begin{itemize}
+  \itemsep0em
+  \item anisotropy in the flux resulting from strongly directional sources,
+  \item anisotropy resulting from strong differences between
+material properties (this can be due to differences in
+materials spatially or due to changes in interaction probabilities as a function
+of energy),
+  \item anisotropy in the flux from algorithmic limitations (ray effects).
+\end{itemize}
+There are four primary physical mechanisms by which the flux may
+be anisotropic: streaming paths, problems with high
+scattering effects, problems with high material heterogeneity (specifically with
+materials with strong differences in scattering and absorption probabilities),
+and problems with monodirectional sources. We created a set of test problems to investigate the new method's performance in all of these areas.
+
+The labyrinth problems have isotropic point sources on the left hand side of the
+problem emitting a Watt spectrum of
+neutrons approximating the energy spectrum emitted by that of $^{235}$U fission.
+On the right hand side of the problem there is a NaI detector recording the flux.
+They are composed of a concrete maze with an air channel through the maze, and
+then open air channels at either end of the channels. These problems are 
+likely to have ray effects in the air region near the forward source. These problems have strong
+differences in interaction probabilities between the air and the concrete,
+thus they will have material heterogeneity. Further, because the concrete is
+composed of several lighter-mass elements, these will also be highly scattering.
+
+
+A steel beam embedded in
+concrete with a NaI detector located on the right hand side of the problem was another challenge problem.
+Because the particles have preferential flow through the steel and not the concrete, this is functionally a tough streaming problem. 
+
+We also used a problem containing rebar in concrete with steel rebar running through
+the concrete in different directions. In this problem, a NaI detector is
+used to measure the response on the right hand side of the problem in yellow.
+The source is both space- and energy-dependent, emitting a Watt spectrum of
+neutrons characteristic of $^{235}$U fission, and is distributed in a 100x160
+centimeter plate
+on the left hand side of the problem. The source is monodirectional in $+x$.
+This problem will have angular
+dependence, but preferential flowpaths through the concrete are not directed
+towards the detector location on the other side of the shielding in some of the
+rebar. This problem has material heterogeneity both in the concrete and between
+the concrete and air. This problem is highly scattering from the concrete, and
+is unlikely to have ray effects without a strong single preferential flowpath
+through the shield.
+
+Finally, a small application problem relevant to the interests of this project is a
+radiotherapy room that has concrete
+walls, a water-based phantom that is being irradiated by a monodirectional
+source in the room, and a hallway where a therapy technician might walk.  Because this problem is primarily air with concrete
+borders, it will have strong streaming effects in the air. 
+Because of the high fraction of air in this problem, we also anticipate
+ray effects to occur. While there will be scattering in this problem, it will
+not be as strong of an effect as other characterization problems.
+
+The performance of CADIS-$\Omega$ was characterized and compared against
+CADIS and a standard, nonbiased analog Monte Carlo run for a series of problems.
+We found that CADIS-$\Omega$ does not outperform
+CADIS for all problems containing anisotropy in the flux. Depending on how and
+where the flux
+anisotropy was induced in the problem, CADIS-$\Omega$ had the potential to
+significantly increase the FOM in Monte Carlo. These results were not
+consistent, and are not entirely predictable.
+
+In comparing the single turn and multiple turn labyrinths, it was observed that
+more scattering effects decrease the effectiveness of CADIS-$\Omega$. Because
+more scattering is required to penetrate the multiple turn labyrinth,
+the performance of CADIS-$\Omega$ was poorer. In the single turn labyrinth
+energy bins that had more isotropy in the flux induced by scattering also were
+poorer performing for CADIS-$\Omega$.
+
+To add to this complexity, problems with little or no scattering were also
+difficult for CADIS-$\Omega$ to handle. These problems were also problematic for
+CADIS, as they were generally comprised of ``thin'' materials to induce
+streaming effects. As a result, sampling events occurred over several
+centimeters, which also was over several orders of magnitude in flux change.
+This resulted in very high relative errors, as observed in the beam facility
+problem. This was not as problematic in the therapy room example because the
+problem was bounded by 10 cm of concrete, which allowed for particle scattering
+rather than leakage.
+
+Several material variants of the steel beam in concrete problem were run. The
+results of this small study confirmed that both CADIS and CADIS-$\Omega$ obtain
+poorer FOMs with air than with steel or concrete. In the case of the air
+variant, the FOMs obtained by CADIS-$\Omega$ were generally lower than CADIS,
+but the relative errors were also better. For all material variants of the steel
+beam problem, CADIS and CADIS-$\Omega$ achieved superior FOMs to the nonbiased
+analog, but these were an order of magnitude lower for the air variant.
+
+The rebar-embedded concrete problem showed that for problems with
+geometric complexity, CADIS-$\Omega$ can also struggle. Because the rebar in
+this problem was not always directed in line with the detector tally, particles
+could more freely move perpendicular to the tally path, crossing out of
+importance with a preferential flowpath. As a result, in high energy bins the
+tally relative error was very high for both CADIS and CADIS-$\Omega$. However,
+CADIS-$\Omega$'s performance was poorer. The FOMs obtained by CADIS-$\Omega$ in
+this problem were one to two orders of magnitude smaller than CADIS or the
+nonbiased analog.
+
+CADIS-$\Omega$ achieved lower relative errors than CADIS for many problems, but
+often this was offset by a very long runtime. The long runtime impacted the FOM.
+As a result, even though CADIS-$\Omega$ achieves a lower relative error for the
+same particle count, it may be more advantageous to simply run standard CADIS
+for longer. In a few instances, the runtime for CADIS-$\Omega$ is comparable to
+CADIS. This occurs in the beam and therapy room problems, for example. Although
+these problems are not the best for either CADIS or CADIS-$\Omega$, there is no
+caveat to using CADIS-$\Omega$ if choosing a hybrid method.
+
+The characterization problems' variations in material and geometric
+configuration showed that there is no distinct behavior for which CADIS-$\Omega$
+is universally better. However,
+in problem geometries where preferential flowpaths are directed
+towards the tally detector, and where materials provide short mean free paths to
+interaction or resampling sites, CADIS-$\Omega$ is a well-suited method.
+
+The angle-based parametric study provided a number of interesting observations on
+the performance of the $\Omega$ methods.
+First, the effect of T$_{det}$ does not change the FOM with CADIS-$\Omega$ more
+than CADIS. The hypothesis that I/O requirements would severely
+impact the FOM for CADIS-$\Omega$ was shown to be lower than
+hypothesized. The FOM change between
+FOM$_{MC}$ and FOM$_{hybrid}$ was roughly the same for CADIS as CADIS-$\Omega$
+because the CADIS-$\Omega$ runtimes are so much longer than CADIS.
+
+Next, the only consistent region in which CADIS-$\Omega$ outperforms CADIS is in
+high energies. For almost all P$_N$ orders and all quadrature orders, CADIS-$\Omega$
+achieved lower relative errors and higher FOMs than CADIS. In high energy bins,
+increasing quadrature order showed a decrease in I$_RE$, increasing P$_N$ order
+did not show a large change in I$_RE$. In the same bins, I$_{FOM}$ values above
+unity were observed for both P$_N$ and S$_N$ order, but no trends with changing
+parameter value were observed.
+
+By including the runtime to calculate
+the FOM, the comparative performance of CADIS-$\Omega$ dropped when compared to
+using the relative error. Several
+energy bins in CADIS-$\Omega$--for quadrature orders and
+P$_N$ orders--achieved better FOMs than
+CADIS. However no P$_N$ order consistently outperformed the other, while low
+S$_N$ orders generally achieved better FOMS for CADIS-$\Omega$ than CADIS.
+However, despite the lack of consistent performance for a single P$_N$ order,
+the raw values obtained with P$_N$ order are promising. With P$_N$ order
+there were more energy bins that had high I$_{FOM}$ values than with quadrature
+order.
+
+Another observation was
+that CADIS-$\Omega$ consistently biases
+particles better than CADIS. For the same number of source particles,
+CADIS-$\Omega$
+achieves lower relative error than CADIS for most energy bins with both P$_N$
+order and quadrature order. This means that while sampling may be slow, the
+importance map generated with the $\Omega$ flux is generally
+better at moving particles to the tally region than
+CADIS.
+
+Based on the results, a number of
+recommendations can be made based on deterministic solver choice. First, the
+best P$_N$ order choice is
+dependent on the energy range in which one is tallying. For low energy regions,
+P$_N$ order 1 will give the best FOMs relative to CADIS, for intermediate
+energies P$_N$ 3 is a better choice, and for high energies any P$_N$ order is
+satisfactory. In general, because lower P$_N$ orders have lower runtimes, these
+will get the best results for CADIS-$\Omega$ the fastest, and have comparatively
+the best relative errors and FOMs against CADIS. Next, the best S$_N$ order
+choice is
+
+If one has to choose between varying P$_N$ order and S$_N$ order to improve the
+importance map for their method, varying S$_N$ order will have a greater impact.
+This is the case for using either CADIS or CADIS-$\Omega$. However, both methods
+have a turnarount point at which increasing S$_N$ order does not improve the
+relative error enough to offset the time increase of the method. For
+CADIS-$\Omega$, this occurs in bins above S$_N$ 15, and for CADIS it occurs in
+bins aboe S$_N$ 12. For this type of problem, and using all energy bins in the
+tally, CADIS-$\Omega$ will obtain the
+best results with a lower P$_N$ order and intermediate S$_N$ orders.
+
+The characterization problems that were run were heavily biased towards
+low-density streaming to induce anisotropy in the flux. This subset of
+problems, though highly anisotropic, are not the best
+for a method so dependent on weight-window type biasing,
+because particle streaming allowed for particles to cross several orders of
+magnitude in the flux before re-sampling. This meant that in a high-importance
+region a particle may split many thousands of times in a new splitting event.
+Unfortunately, the $\Omega$-methods are not immune to this issue and so suffered
+the same effects as CADIS, even with positive effects like the reduction of ray
+effects. Further, with the strong dependence on angle, the $\Omega$-fluxes may
+have exacerbated this streaming-sampling effect in regions with strong angular
+dependence around the detector. In a problem like the single turn labyrinth,
+where the $\Omega$-flux generated a strong line of importance between the exit
+of the labyrinth and the detector and drastically dropped the importance behind
+the detector, a particle has much more opportunity to cross several orders of
+magnitude of importance than it does in CADIS. This is likely what caused
+CADIS-$\Omega$ to take longer in Monte Carlo transport than CADIS in many of the
+characterization problems.
+
+It should also be noted that while the angle-dependent parametric study revealed
+how P$_N$ order and quadrature order may affect a problem's results, the
+best parameter choices for this problem are by no means a prescriptive solution
+for other problems. Different the characterization problems' results were, depending on
+the source definition, the material composition of the problem, and the
+geometric configuration of the problem. Using the deterministic parameter
+choices that appear the best for the steel beam in concrete may not be the best
+for, say, a multi-turn labyrinth. From this study we have a good starting point
+from which to further characterize the method for other application problems.
 
 
 
+
+% ---------------------------------------------------
+% ---------------------------------------------------
 % ---------------------------------------------------
 \section{Products}
 \label{sect::products}
@@ -364,7 +545,7 @@ We've started running calculations with this model.
 \begin{compactitem}
 \item PHYSOR 2016 paper, ``FW/CADIS-$\Omega$: AN ANGLE-INFORMED HYBRID METHOD FOR DEEP-PENETRATION RADIATION TRANSPORT" can be found at \url{http://munkm.github.io/papers/munk\_physor16.pdf}
 
-\item Madicken Munk's dissertation, ``FW/CADIS-$\Omega$: An Angle-Informed Hybrid Method for Neutron Transport", can be found at \url{http://github.com/munkm/dissertation/thesis.pdf}
+\item Madicken Munk's dissertation, ``FW/CADIS-$\Omega$: An Angle-Informed Hybrid Method for Neutron Transport", can be found at \url{http://github.com/munkm/dissertation/thesis.pdf} \cite{Munk2017}
 \end{compactitem}
 
 %b)	Web site or other Internet sites (list the URL) that reflect the results of this project. \\
